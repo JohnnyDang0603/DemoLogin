@@ -3,34 +3,29 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # GET /resource/sign_up
-  # def new
+  # def new; end
+
+  # def create
   #   super
+  #   @user = User.new(params[:user])
+  #   if @user.save
+  #     # Tell the UserMailer to send a welcome email after save
+  #     # UserMailer.welcome_email(@user).deliver_later
+  #     redirect_to root_path
+  #   else
+  #     render :new
+  #   end
+  #   # end
   # end
 
-  def create
-    @user = User.new(params[:user])
+  # private
 
-    respond_to do |format|
-      if @user.save
-        # Tell the UserMailer to send a welcome email after save
-        UserMailer.welcome_email(@user).deliver_later
-
-        format.html { redirect_to(@user, notice: 'User was successfully created.') }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :login)
-  end
+  # def user_params
+  #   params.require(:user).permit(:username, :email)
+  # end
 
   # GET /resource/edit
   # def edit

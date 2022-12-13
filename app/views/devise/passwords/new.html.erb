@@ -3,14 +3,14 @@
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-group">
+    <%= f.label :email, style:"display: block" %><br />
+    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+  <div class="form-group">
+    <%= f.label :username, style:"display: block" %><br />
+    <%= f.text_field :username, autocomplete: "username", class: "form-control" %>
   </div>
 
   <div class="actions">
