@@ -1,0 +1,42 @@
+<div class="container-sm">
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br />
+<%# <%= link_to "Back to user", users_path, class: "btn btn-outline-primary" %> %>
+<%= link_to "New timesheet", new_timesheet_path, class: "btn btn-outline-success" %>
+<br />
+<br />
+
+<table class = "table table-bordered table-striped">
+   <thead>
+      <tr>
+         <th>User id</th>
+         <th>Check in</th>
+         <th>Check out</th>
+         <th>Day</th>
+         <th></th>
+      </tr>
+   </thead>
+
+   <tbody>
+      <% @timesheets.each do |timesheet| %>
+         <tr>
+            <td><%= timesheet.user_id %></td>
+            <td><%= format_time_24h(timesheet.check_in)%></td>
+            <td><%= format_time_24h(timesheet.check_out)%></td>
+            <td><%= format_date_normal(timesheet.day)%></td>
+            <td>
+              <div class="btn-group"><%= button_to "Delete",  timesheet, method: :delete, class: "btn btn-outline-danger",  form: { data: { turbo_confirm: "Are you sure?" } } %>
+                <%= link_to "Update", edit_timesheet_path(timesheet), class: "btn btn-outline-primary" %></div>
+            </td>
+         </tr>
+      <% end %>
+   </tbody>
+
+</table>
+
+</div>
