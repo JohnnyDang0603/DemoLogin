@@ -311,5 +311,4 @@ Devise.setup do |config|
   config.authentication_keys = [:login]
   config.reset_password_keys = [:email]
   config.confirmation_keys = [:email]
-
 end
