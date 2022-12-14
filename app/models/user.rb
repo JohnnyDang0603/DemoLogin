@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :timesheets, dependent: :destroy
@@ -21,5 +22,9 @@ class User < ApplicationRecord
     # elsif conditions.has_key?(:username) || conditions.has_key?(:email)
     #   where(conditions.to_h).first
     # end
+  end
+
+  def admin?
+    has_role?(:admin)
   end
 end

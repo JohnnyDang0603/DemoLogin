@@ -1,3 +1,4 @@
 class Timesheet < ApplicationRecord
-  belongs_to :user, optional: true
+  resourcify
+  belongs_to :user
 end

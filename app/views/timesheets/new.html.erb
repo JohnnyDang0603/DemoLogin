@@ -10,11 +10,14 @@
       </ul>
     </div>
   <% end %>
+
 <%= form_with model: @timesheet, local: true do |form| %>
+  <%if current_user.admin?%>
   <div class="form-group">
     <%= form.label :user_id, style: "display: block" %>
     <%= form.select :user_id, User.all.collect{|u|[u.id]},class:'form-control' %>
   </div>
+  <%end%>
   <div class="form-group">
     <%= form.label :check_in, style: "display: block" %>
     <%= form.time_field :check_in, format: "%H:%M",class:"form-control" %>
