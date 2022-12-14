@@ -4,33 +4,40 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 gem 'rails', '~> 6.1.7'
-gem "rolify"
-gem 'devise', '~> 4.1'
-gem "pundit"
-gem 'letter_opener', group: :development
 gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', require: false
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem "rolify"
+gem "pundit"
+gem 'devise'
+
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug'
+  gem 'pry-rails'
+  gem 'dotenv-rails'
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
-  gem 'web-console', '>= 4.1.0'
-  gem 'listen', '~> 3.3'
-  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'web-console', '~> 4.2'
+  gem 'rack-mini-profiler', '~> 3.0'
+  gem 'listen', '~> 3.7'
   gem 'spring'
+  gem 'rubocop', '~> 1.23', require: false
+  gem 'brakeman', require: false
+  gem 'letter_opener'
+  gem 'annotate'
+  gem 'bullet'
 end
-
-group :test do
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver', '>= 4.0.0.rc1'
-  gem 'webdrivers'
-end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
