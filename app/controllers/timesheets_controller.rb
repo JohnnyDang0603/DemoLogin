@@ -3,6 +3,7 @@ class TimesheetsController < ApplicationController
   before_action :set_timesheet, only: %i[show update destroy edit]
   before_action :check_access!, except: %i[index new create]
   # before_action :check_user_access!,
+
   def index
     @timesheets =
       if params[:user_id].blank?
@@ -17,11 +18,12 @@ class TimesheetsController < ApplicationController
   end
 
   def create
-    if current_user.admin?
-      @timesheet = Timesheet.new(timesheet_params)
-    else
-      @timesheet = Timesheet.new(timesheet_params.merge(user_id: curent_user.id))
-    end
+    @timesheet =
+      if current_user.admin?
+        Timesheet.new(timesheet_params)
+      else
+        Timesheet.new(timesheet_params.merge(user_id: curent_user.id))
+      end
 
     if @timesheet.save
       redirect_to timesheets_path, notice: 'The timesheet has been added'
@@ -34,9 +36,7 @@ class TimesheetsController < ApplicationController
     @timesheet = Timesheet.find(params[:id])
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @timesheet.update(timesheet_params)
