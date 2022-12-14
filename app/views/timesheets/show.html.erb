@@ -1,0 +1,12 @@
+<div class="container-sm">
+<h1>Timesheet <%=@timesheet.id%></h1>
+
+<p>
+   <strong>User Id: </strong><%= @timesheet.user_id %><br />
+   <strong>Day :</strong> <%= format_date_normal(@timesheet.day) %><br />
+   <strong>Check in:</strong> <%= format_time_24h(@timesheet.check_out) %><br />
+   <strong>Check out:</strong> <%= format_time_24h(@timesheet.check_out) %><br />
+</p>
+
+<%=link_to "Back to list", timesheets_path,class:'btn btn-outline-success'%>
+</div>

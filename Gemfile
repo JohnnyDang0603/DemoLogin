@@ -5,8 +5,9 @@ ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
-
+gem "rolify"
 gem 'devise', '~> 4.1'
+gem "pundit"
 # Use sqlite3 as the database for Active Record
 gem 'letter_opener', group: :development
 gem 'sqlite3', '~> 1.4'

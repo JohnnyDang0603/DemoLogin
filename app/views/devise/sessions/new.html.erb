@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="form-group">
-    <%= f.label :login, style:"display:block" %><br />
+    <%= f.label "Username Or Email", style:"display:block" %><br />
     <%= f.text_field :login, autofocus: true, class:"form-control"%>
   </div>
 
